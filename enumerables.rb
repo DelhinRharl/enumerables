@@ -10,6 +10,7 @@ module MyEnumerable
         end
         flag
     end
+
     def any?(&block)
         flag = false
         @list.each do |item|
@@ -20,4 +21,15 @@ module MyEnumerable
         end
         flag
     end
+
+    def filter(&block)
+        result = []
+        @list.each do |item|
+            if block.call(item)
+                result << item
+            end
+        end
+        result
+    end
+
 end
